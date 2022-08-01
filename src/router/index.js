@@ -1,34 +1,58 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import IndexView from "../views/IndexView.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: HomeView,
+    name: "index",
+    component: IndexView,
+    children: [
+      {
+        path: "/",
+        name: "about",
+        component: function () {
+          return import("../views/HomeView.vue");
+        },
+      },
+      {
+        path: "/about",
+        name: "about",
+        component: function () {
+          return import("../views/AboutView.vue");
+        },
+      },
+      {
+        path: "/menu1/sub1",
+        name: "sub1",
+        component: function () {
+          return import("../views/Menu1/Sub1View.vue");
+        },
+      },
+      {
+        path: "/menu1/sub2",
+        name: "sub2",
+        component: function () {
+          return import("../views/Menu1/Sub2View.vue");
+        },
+      },
+    ]
   },
   {
-    path: "/about",
-    name: "about",
+    path: "/login",
+    name: "login",
     component: function () {
-      return import("../views/AboutView.vue");
+      return import("../views/Login/LoginView.vue");
     },
   },
+  
   {
-    path: "/menu1/sub1",
-    name: "sub1",
+    path: "/sigin",
+    name: "sigin",
     component: function () {
-      return import("../views/Menu1/Sub1View.vue");
-    },
-  },
-  {
-    path: "/menu1/sub2",
-    name: "sub2",
-    component: function () {
-      return import("../views/Menu1/Sub2View.vue");
+      return import("../views/Login/SiginView.vue");
     },
   },
 ];
