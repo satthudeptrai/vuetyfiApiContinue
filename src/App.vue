@@ -1,32 +1,41 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
-  </div>
+  <v-app>
+    <div>
+      <div class="app">
+        <HeaderComponent />
+        <LeftMenu />
+        <div class="container-right">
+          <router-view />
+        </div>
+      </div>
+    </div>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+import LeftMenu from "./views/LeftMenu/index.vue";
+import HeaderComponent from "./views/Header/index.vue";
+import '@/assets/color.scss';
+export default {
+  name: "App",
+  data: () => ({
+    //
+  }),
+  components: {
+    LeftMenu,
+    HeaderComponent,
+  },
+};
+</script>
+<style lang="scss" scoped>
+.app {
+  position: relative;
+  z-index: 1;
+  .container-right {
+    position: absolute;
+    top: 40px;
+    left: 266px;
+    width: calc(100vw - 266px);
   }
 }
 </style>
