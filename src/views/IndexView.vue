@@ -25,6 +25,13 @@ export default {
     LeftMenu,
     HeaderComponent,
   },
+  beforeRouteEnter(to, from, next) {
+    const token = document.cookie
+    console.log("anhanh",next)
+    if (token) {
+      next();
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

@@ -15,9 +15,10 @@
         >
         </v-text-field>
         <v-text-field
-          label="atribute"
+          label="password"
           v-model="user.pass"
           :rules="rules.pass"
+          type="password"
         >
         </v-text-field>
       </v-form>
@@ -38,6 +39,9 @@
         >
           Đăng ký
         </v-btn>
+      </div>
+      <div class="forgot" @click="$router.push({ name: 'forgot' })">
+        Quên cm mật khẩu
       </div>
     </v-card>
   </div>
@@ -66,6 +70,7 @@ export default {
   methods: {
     login() {
       if (this.$refs.loginForm.validate()) {
+        document.cookie='test'
         this.$router.push({ name: 'index' });
       }
     },
@@ -86,6 +91,12 @@ export default {
     background: var(--color-yellow);
     .login-form {
       padding: 10px;
+      .forgot {
+        color: var(--color-blue);
+        font-size: 14px;
+        margin-top: 5px;
+        cursor: pointer;
+      }
     }
   }
 </style>

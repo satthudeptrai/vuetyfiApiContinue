@@ -47,12 +47,18 @@ const routes = [
       return import("../views/Login/LoginView.vue");
     },
   },
-  
   {
     path: "/sigin",
     name: "sigin",
     component: function () {
       return import("../views/Login/SiginView.vue");
+    },
+  },
+  {
+    path: "/forgot",
+    name: "forgot",
+    component: function () {
+      return import("../views/Login/ForgotPassword.vue");
     },
   },
 ];
