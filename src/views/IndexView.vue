@@ -1,15 +1,11 @@
 <template>
-  <v-app>
-    <div>
-      <div class="app">
-        <HeaderComponent />
-        <LeftMenu />
-        <div class="container-right">
-          <router-view />
-        </div>
-      </div>
+  <div class="app">
+    <HeaderComponent />
+    <LeftMenu />
+    <div class="container-right">
+      <router-view />
     </div>
-  </v-app>
+  </div>
 </template>
 
 <script>
@@ -25,13 +21,13 @@ export default {
     LeftMenu,
     HeaderComponent,
   },
-  beforeRouteEnter(to, from, next) {
-    const token = document.cookie
-    console.log("anhanh",next)
-    if (token) {
-      next();
-    }
-  }
+  // beforeRouteEnter(to, from, next) {
+  //   const token = document.cookie
+  //   console.log("anhanh",next)
+  //   if (token) {
+  //     next();
+  //   }
+  // }
 };
 </script>
 <style lang="scss" scoped>

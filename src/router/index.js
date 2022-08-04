@@ -12,7 +12,7 @@ const routes = [
     children: [
       {
         path: "/",
-        name: "about",
+        name: "home",
         component: function () {
           return import("../views/HomeView.vue");
         },

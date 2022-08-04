@@ -10,15 +10,19 @@
       >
         <v-text-field
           label="name"
+          :name="Math.random()"
           v-model="user.name"
           :rules="rules.name"
+          autocomplete="username"
         >
         </v-text-field>
         <v-text-field
           label="password"
+          :name="Math.random()"
           v-model="user.pass"
           :rules="rules.pass"
           type="password"
+          autocomplete="new-password"
         >
         </v-text-field>
       </v-form>
@@ -71,7 +75,7 @@ export default {
     login() {
       if (this.$refs.loginForm.validate()) {
         document.cookie='test'
-        this.$router.push({ name: 'index' });
+        this.$router.push({ name: 'home' });
       }
     },
     sigin() {
