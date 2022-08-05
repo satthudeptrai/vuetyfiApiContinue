@@ -16,6 +16,10 @@ const routes = [
         component: function () {
           return import("../views/HomeView.vue");
         },
+        meta: {
+          icon: 'mdi-help-box',
+          title: 'Menu3'
+        }
       },
       {
         path: "/about",
@@ -23,6 +27,19 @@ const routes = [
         component: function () {
           return import("../views/AboutView.vue");
         },
+        meta: {
+          icon: 'mdi-image',
+          title: 'Menu2'
+        }
+      },
+      //parent link
+      {
+        path: "/menu1",
+        name: "menu1",
+        meta: {
+          icon: 'mdi-image',
+          title: 'Menu1'
+        }
       },
       {
         path: "/menu1/sub1",
@@ -30,6 +47,11 @@ const routes = [
         component: function () {
           return import("../views/Menu1/Sub1View.vue");
         },
+        meta: {
+          icon: 'mdi-view-dashboard',
+          title: 'sub1',
+          parent: 'menu1'
+        }
       },
       {
         path: "/menu1/sub2",
@@ -37,6 +59,11 @@ const routes = [
         component: function () {
           return import("../views/Menu1/Sub2View.vue");
         },
+        meta: {
+          icon: 'mdi-view-dashboard',
+          title: 'sub2',
+          parent: 'menu1'
+        }
       },
     ]
   },

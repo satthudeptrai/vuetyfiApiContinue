@@ -59,7 +59,7 @@ export default {
   },
   async mounted () {
     try {
-      const res = await getList();
+      const res = await getList(999999, 0);
       this.items = res.results;
     } catch (error) {
       console.log('error', error)

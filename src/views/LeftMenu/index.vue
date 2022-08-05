@@ -12,7 +12,7 @@
         <v-divider></v-divider>
 
         <v-list dense nav>
-          <div v-for="item in items" :key="item.title">
+          <div v-for="item in listMenu" :key="item.title">
             <v-list-item
               v-if="item.sub.length === 0"
               link
@@ -64,47 +64,13 @@
 </template>
 
 <script>
+import router from '@/router/index'
 export default {
   name: "LeftMenu",
   data() {
     return {
       active: true,
-      items: [
-        {
-          title: "Menu1",
-          name: 'menu1',
-          icon: "mdi-image",
-          router: "",
-          sub: [
-            {
-              title: "sub1",
-              name: 'sub1',
-              icon: "mdi-view-dashboard",
-              router: "/menu1/sub1",
-            },
-            {
-              title: "sub2",
-              name: 'sub2',
-              icon: "mdi-view-dashboard",
-              router: "/menu1/sub2",
-            },
-          ],
-        },
-        {
-          title: "Menu2",
-          name: 'menu2',
-          icon: "mdi-image",
-          router: "/about",
-          sub: [],
-        },
-        {
-          title: "Menu3",
-          name: 'menu3',
-          icon: "mdi-help-box",
-          router: "/",
-          sub: [],
-        },
-      ],
+      listMenu: [],
     };
   },
   computed: {
@@ -113,9 +79,31 @@ export default {
     }
   },
   mounted() {
-    
+    this.getListMenu();
   },
-  methods: {},
+  methods: {
+    getListMenu() {
+      this.listMenu = router.options.routes[0].children.reduce((arr, item) => {
+        if (!item.meta.parent) {
+          return [...arr, {
+            title: item.meta.title,
+            name: item.name,
+            icon: item.meta.icon,
+            router: item.path,
+            sub: [],
+          }]
+        }
+        const position = arr.findIndex(i => i.name === item.meta.parent);
+        arr[position].sub.push({
+          title: item.meta.title,
+          name: item.name,
+          icon: item.meta.icon,
+          router: item.path,
+        })
+        return arr;
+      }, [])
+    }
+  },
 };
 </script>
 
